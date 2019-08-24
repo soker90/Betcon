@@ -1,7 +1,7 @@
 import sys, sqlite3, os, inspect, json, yaml
 from os.path import expanduser
 from collections import OrderedDict
-
+from yaml import Loader
 from func_aux import checkFileExist
 
 
@@ -18,7 +18,7 @@ class LibYaml:
 			self.initConfig()
 
 		stream = open(self.directory, 'r')
-		config = yaml.load(stream)
+		config = yaml.load(stream, Loader=Loader)
 		stream.close()
 		return config
 
